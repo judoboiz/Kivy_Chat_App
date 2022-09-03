@@ -1,7 +1,8 @@
+from kivy.uix.widget import Widget
 from kivy.app import App
-from kivy.uix.widget
 
-class MainWinget():
+class MainWinget(Widget):
+    pass
 
 class TheLabApp(App):
     pass

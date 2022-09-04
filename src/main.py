@@ -16,21 +16,12 @@ class FrontPage(BoxLayout):
             send_msg = ''.join(format(ord(i), '08b')for i in msg)
             return send_msg
         elif type == False:
-            recive_msg = ""
-            for i in range(0, len(msg), 7):
-                temp_data = int(msg[i:i + 7])
-                ecimal_data = BinaryToDecimal
-
-
-    def BinaryToDecimal(binary):
-        binary1 = binary
-        decimal, i, n = 0, 0, 0
-        while(binary != 0):
-            dec = binary % 10
-            decimal = decimal + dec * pow(2, i)
-            binary = binary//10
-            i += 1
-        return (decimal)
+            end_msg = ""
+            for i in range(int(len(msg)/8)):
+                recive_msg = chr(int(msg[0+i*8:8+i*8],2))
+                end_msg = end_msg + recive_msg
+                print(recive_msg)
+            return end_msg
 
 class MyApp(App):
     def build():

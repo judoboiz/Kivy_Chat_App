@@ -4,14 +4,14 @@ from kivy.uix.boxlayout import BoxLayout
 
 class FrontPage(BoxLayout):
 
-    def play_sound(self):
+    def play_sound(slf):
         sound = SoundLoader.load("sound.mp3")
         if sound:
             sound.play()
         else:
             print("Fuck my self")
 
-    def translertor(self, msg,type):
+    def translertor(msg,type):
         if type==True:
             send_msg = ''.join(format(ord(i), '08b')for i in msg)
             return send_msg
@@ -33,7 +33,7 @@ class FrontPage(BoxLayout):
         return (decimal)
 
 class MyApp(App):
-    def build(self):
+    def build():
         return FrontPage()
 
 if __name__ == "__main__":

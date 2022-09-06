@@ -5,19 +5,25 @@ from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
+from kivy.uix.scrollview import ScrollView
+from kivy.uix.label import Label
 
 class buttuon(App):
     def build(self):
         main_layout=BoxLayout(orientation="vertical")
 
-       
-        name= TextInput(text="name", font_size=33, size_hint=(.3, .175),pos_hint={'center_x':.975, 'center_y':.935})
+        self.char_limit=16
+        self.name= TextInput(text="name", font_size=33, size_hint=(.3, .175),pos_hint={'center_x':.975, 'center_y':.935})
+        if len(self.name) >= self.char_limit :
+            problem = Label(text="YOU ENCOUNTERD A PROBLEM:\n sentence to long " )
+            main_layout.add_widget(problem)
+        else : pass
         
         alt_layout=BoxLayout(orientation="horizontal")
 
         alt_layout.add_widget(name)
        
-        text= TextInput( font_size=33, size_hint=(.3, .3),pos_hint={'center_x':.05, 'center_y':.05},background_color=[.9,.1,-3,1.7])
+        text= TextInput( font_size=33, size_hint=(.3, .3),pos_hint={'center_x':.05, 'center_y':.05},background_color=[1,0,0,1.7])
         send = Button(text="send", size_hint=(.05, .2),background_color=[1,.1,.1,6])
 
         alt_layout2=BoxLayout(orientation="horizontal")
